@@ -4,8 +4,10 @@ Given a string containing just the characters '(', ')', '{', '}', '[' and ']', d
 
 An input string is valid if:
 
-Open brackets must be closed by the same type of brackets.
-Open brackets must be closed in the correct order.
+1. Open brackets must be closed by the same type of brackets.
+
+2. Open brackets must be closed in the correct order.
+
 Note that an empty string is also considered valid.
 
 ## My solution:
