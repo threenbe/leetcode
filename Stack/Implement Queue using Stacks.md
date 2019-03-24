@@ -17,11 +17,12 @@ Implement the following operations of a queue using stacks.
 
 ```cpp
 class MyQueue {
-public:
-    /** Initialize your data structure here. */
+private:
     stack<int> s1;
     stack<int> s2;
-    
+
+public:
+    /** Initialize your data structure here. */  
     MyQueue() {
         
     }
@@ -70,12 +71,13 @@ public:
  ## My other solution:
 
  ```cpp
- class MyQueue {
-public:
-    /** Initialize your data structure here. */
+class MyQueue {
+private:
     stack<int> s1;
     stack<int> s2;
-    
+
+public:
+    /** Initialize your data structure here. */
     MyQueue() {
         
     }
@@ -120,4 +122,3 @@ public:
  * bool param_4 = obj.empty();
  */
  ```
- 
