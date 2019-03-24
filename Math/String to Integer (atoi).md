@@ -44,7 +44,7 @@ int myAtoi(char* str) {
 }
 ```
 
-## Another solution:
+## My other solution:
 
 ```Java
 class Solution {
