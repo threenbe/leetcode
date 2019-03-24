@@ -68,7 +68,7 @@ public:
  */
  ```
 
- ## My other solution:
+ ## My other (faster) solution:
 
  ```cpp
 class MyQueue {
