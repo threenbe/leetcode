@@ -31,7 +31,8 @@ public:
         }
         return true;
     }
-    
+
+private:
     void inorder(TreeNode* root, vector<int> &v) {
         if (root == NULL) return;
         
