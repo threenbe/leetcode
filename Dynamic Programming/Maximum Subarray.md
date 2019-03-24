@@ -32,8 +32,8 @@ class Solution {
 ```Java
 class Solution {
     public int maxSubArray(int[] nums) {
-        /*So this solution works afaik but it's very very inefficient memory-wise so it's kinda worthless as a result,
-        one leetcode I exceeded the memory limit on one of the test cases.*/
+        /*So this solution works afaik but it's very very inefficient memory-wise so it's kinda worthless 
+        as a result, on leetcode I exceeded the memory limit on one of the test cases.*/
         //this 2D array will contain all of the possible sums like so:
         //sums[0][0] contains just nums[0]
         //sums[0][1] contains nums[0] + nums[1]
