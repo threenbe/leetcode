@@ -103,3 +103,52 @@ class Solution {
     }
 }
 ```
+
+## Another solution:
+
+```Java
+class Solution {
+    public int myAtoi(String s) {
+        int res = 0;
+        int i = 0;
+        boolean first_digit_found = false;
+        int polarity = 1;
+        for (i = 0; i < s.length() && s.charAt(i) == ' '; i++) {};
+        for (; i < s.length(); i++) {
+            Character c = s.charAt(i);
+            if (!Character.isDigit(c)) {
+                if (!first_digit_found && c.equals('-')) {
+                    first_digit_found = true;
+                    polarity = -1;
+                }
+                else if (!first_digit_found && c.equals('+')) {
+                    first_digit_found = true;
+                }
+                else {
+                    break;
+                }
+            }
+            else {
+                first_digit_found = true;
+                Integer num = c - '0';
+                if (res > Integer.MAX_VALUE/10) {
+                    if (polarity == 1) {
+                        return Integer.MAX_VALUE;
+                    }
+                    else {
+                        return Integer.MIN_VALUE;
+                    }
+                }
+                if (polarity == 1 && num > Integer.MAX_VALUE - res*10) {
+                    return Integer.MAX_VALUE;
+                }
+                if (polarity == -1 && num*-1 < Integer.MIN_VALUE + res*10) {
+                    return Integer.MIN_VALUE;
+                }
+                res = res*10 + num;
+            }
+        }
+        return res*polarity;
+    }
+}
+```
