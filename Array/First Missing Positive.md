@@ -6,7 +6,7 @@ For example, the input [1,0,2] returns 3. The input [3,4,-1,1] returns 2.
 
 You must implement an algorithm that runs in O(n) time and uses constant extra space.
 
-## My solution:
+## My solution (with O(n) space...):
 
 ```Java
 class Solution {
