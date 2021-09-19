@@ -1,6 +1,7 @@
 # First Missing Positive
 
 Given an unsorted integer array nums, return the smallest missing positive integer.
+
 For example, the input [1,0,2] returns 3. The input [3,4,-1,1] returns 2.
 
 You must implement an algorithm that runs in O(n) time and uses constant extra space.
