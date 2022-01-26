@@ -92,8 +92,8 @@ class LRUCache {
             addNode(newNode);
             currentCapacity += 1;
             if (currentCapacity > capacity) {
-                Node tail = removeLRUNode();
-                hm.remove(tail.key);
+                Node lruNode = removeLRUNode();
+                hm.remove(lruNode.key);
                 currentCapacity -= 1;
             }
         }
