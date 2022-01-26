@@ -25,3 +25,25 @@ class Solution {
     }
 }
 ```
+
+## My solution that uses a HashMap:
+
+```Java
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int solution[] = new int[]{-1,-1};
+        HashMap<Integer, Integer> sumMap = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            sumMap.put(target-nums[i], i);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (sumMap.containsKey(nums[i]) && sumMap.get(nums[i]) != i) {
+                solution[0] = sumMap.get(nums[i]);
+                solution[1] = i;
+                return solution;
+            }
+        }
+        return null;
+    }
+}
+```
