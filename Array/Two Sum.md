@@ -47,3 +47,23 @@ class Solution {
     }
 }
 ```
+
+## My solution that uses a HashMap and passes over it once:
+
+```Java
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int solution[] = new int[]{-1,-1};
+        HashMap<Integer, Integer> sumMap = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (sumMap.containsKey(target-nums[i])) {
+                solution[0] = i;
+                solution[1] = sumMap.get(target-nums[i]);
+                return solution;
+            }
+            sumMap.put(nums[i], i);
+        }
+        return null;
+    }
+}
+```
