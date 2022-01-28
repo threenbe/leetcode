@@ -50,3 +50,41 @@ class Solution {
     }
 }
 ```
+
+## My better solution:
+
+```Java
+class Solution {
+    private static HashMap<Character, Character> bracketMappings = new HashMap<Character, Character>();
+    static {
+        bracketMappings.put('(', ')');
+        bracketMappings.put('[', ']');
+        bracketMappings.put('{', '}');
+    }
+    
+    private boolean isValidClosedBacket(Stack<Character> stack, Character closedBracket) {
+        if (stack.isEmpty()) {
+            return false;
+        }
+        Character openBracket = stack.peek();
+        Character validClosedBracket = bracketMappings.get(openBracket);
+        return closedBracket.equals(validClosedBracket);
+    }
+    
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<Character>();
+        for (Character c : s.toCharArray()) {
+            if (bracketMappings.containsKey(c)) {
+                stack.push(c);
+            }
+            else if (isValidClosedBacket(stack, c)) {
+                stack.pop();
+            }
+            else {
+                return false;
+            }
+        }
+        return stack.isEmpty();
+    }
+}
+```
