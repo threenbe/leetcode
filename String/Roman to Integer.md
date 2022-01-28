@@ -40,15 +40,15 @@ class Solution {
         romanChars.put('D',500);
         romanChars.put('M',1000);
         int convertedInt = 0;
-        int prevInt = 0;
+        int prevDigit = 0;
         for (Character c : s.toCharArray()) {
-            int currentInt = romanChars.get(c);
-            if (prevInt > 0 && currentInt > prevInt) {
+            int currentDigit = romanChars.get(c);
+            if (prevDigit > 0 && currentDigit > prevDigit) {
                 //e.g. XI = 11; XIV = 10+4 = 14; 11-2+5 = 14
-                convertedInt -= prevInt*2;
+                convertedInt -= prevDigit*2;
             }
-            convertedInt += currentInt;
-            prevInt = currentInt;
+            convertedInt += currentDigit;
+            prevDigit = currentDigit;
         }
         return convertedInt;
     }
