@@ -36,7 +36,6 @@ class Solution {
             }
         }
         
-        //ArrayList<Integer> courseOrder = new ArrayList<Integer>();
         int[] courseOrder = new int[stack.size()];
         int index = 0;
         while (!stack.isEmpty()) {
