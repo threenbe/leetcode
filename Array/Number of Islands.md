@@ -10,7 +10,7 @@ An island is surrounded by water and is formed by connecting adjacent lands hori
 class Solution {
     public int numIslands(char[][] grid) {
         //we can treat the grid as an adjacency matrix
-        //start a node marked 1 and then traverse the graph until done, then update a count
+        //start at a node marked 1 and then traverse the graph until done, then update a count
         //while traversing the graph, mark each node by setting it to 0 in the graph
         //subsequent traversals will only be carried out from nodes marked as 1
         
