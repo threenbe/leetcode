@@ -6,7 +6,7 @@ Given an array nums of distinct integers, return all the possible permutations. 
 
 ```Java
 class Solution {
-    public void generate_permutations(int permutation_len, List<List<Integer>>output, 
+    public void generatePermutations(int permutation_len, List<List<Integer>>output, 
                                       List<Integer> num_list, int first_index) {
         // This uses the backtracking algorithm to generate each permutation.
         // Say we start with [1,2,3].
@@ -20,7 +20,7 @@ class Solution {
         }
         for (int i = first_index; i < permutation_len; i++) {
             Collections.swap(num_list, first_index, i);
-            generate_permutations(permutation_len, output, num_list, first_index+1);
+            generatePermutations(permutation_len, output, num_list, first_index+1);
             //backtrack
             Collections.swap(num_list, first_index, i);
         }
