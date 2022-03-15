@@ -30,11 +30,16 @@ class Solution {
          * 3. We recurse again and swap indices 2 and 2, so it's unchanged again.
          * 4. Finally we recuse once more and hit the if statement, so we add [1,2,3] to the output list and return.
          * 5. We return to step 3, after which the for loop terminates and returns.
-         * 6. We return to step 2, where our current num_list is [1,2,3] and our indices are 1,1. We increment i and then swap indices 1 and 2 to get [1,3,2].
-         * 7. We then recurse and swap indices 2 and 2, and then recurse again and hit the if statement. [1,3,2] is added to the output list, so we return.
-         * 8. We return to step 6, where we backtrack and change our array back to [1,2,3]. The for loop terminates on the next iteration so we return.
-         * 9. We finally return to step 1. We backtrack on our 0,0 swap (no change) and increment i. We then swap indices 0 and 1 to get [2,1,3].
-         * 10. We recurse and then swap 1,1, and then recurse again to get 2,2, and then recurse again to add [2,1,3] to the output list. I think at this point the idea is clear.
+         * 6. We return to step 2, where our current num_list is [1,2,3] and our indices are 1,1. 
+         *    We increment i and then swap indices 1 and 2 to get [1,3,2].
+         * 7. We then recurse and swap indices 2 and 2, and then recurse again and hit the if statement. 
+         *    [1,3,2] is added to the output list, so we return.
+         * 8. We return to step 6, where we backtrack and change our array back to [1,2,3]. The for loop 
+         *    terminates on the next iteration so we return.
+         * 9. We finally return to step 1. We backtrack on our 0,0 swap (no change) and increment i. 
+         *    We then swap indices 0 and 1 to get [2,1,3].
+         * 10. We recurse and then swap 1,1, and then recurse again to get 2,2, and then recurse again to 
+         * add [2,1,3] to the output list. I think at this point the idea is clear.
         */
     }
     
