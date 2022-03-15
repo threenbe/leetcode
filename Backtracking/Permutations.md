@@ -49,7 +49,7 @@ class Solution {
         for (int n : nums)
             nums_list.add(n);
         int permutation_len = nums_list.size();
-        generate_permutations(permutation_len, output, nums_list, 0);
+        generatePermutations(permutation_len, output, nums_list, 0);
         return output;
     }
 }
