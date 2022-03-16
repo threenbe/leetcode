@@ -4,7 +4,7 @@ Given n non-negative integers representing an elevation map where the width of e
 
 https://leetcode.com/problems/trapping-rain-water/
 
-## My solution:
+## My solution (using a Stack):
 
 ```Java
 class Solution {
