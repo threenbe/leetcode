@@ -13,9 +13,9 @@ https://leetcode.com/problems/making-file-names-unique/
 ```Java
 class Solution {
     public String[] getFolderNames(String[] names) {
-        // base file name -> number of duplicate files with that base file name
         String[] result = new String[names.length];
         int resultIndex = 0;
+        // key -> value : base file name -> number of duplicate files with that base file name
         Map<String, Integer> fileNames = new HashMap<>();
         
         for (String name : names) {
