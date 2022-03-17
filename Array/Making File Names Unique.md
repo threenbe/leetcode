@@ -36,7 +36,7 @@ class Solution {
                 //stored as "wano(5)", then a subsequent attempt by the
                 //user to create a file named "wano(5)" will use "wano(5)"
                 //as its base instead of "wano," and thus get stored as
-                //"wano(5)(1)" instead of "wano(6).""
+                //"wano(5)(1)" instead of "wano(6)."
                 fileNames.put(newName, 0);
                 result[resultIndex++] = newName;
             }
