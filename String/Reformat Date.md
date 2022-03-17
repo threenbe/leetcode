@@ -34,7 +34,8 @@ class Solution {
 }
 ```
 
-## My other solution (used a Map to store months just because; pulling the month out of a Map should be faster than traversing a List for the index anyway):
+## My other solution:
+(Used a Map to store months just because; pulling the month out of a Map should be faster than traversing a List for the index anyway)
 
 ```Java
 class Solution {
