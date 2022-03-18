@@ -49,6 +49,8 @@ class Solution {
         int numberOfRemovals = 0;
         int removalIndex = 0;
         while (numberOfRemovals < k) {
+            //simulate the removals in this way, no need to bother with the 
+            //actual operation since we just need a count by the end
             numberOfRemovals += frequencies[removalIndex++][1];
         }
         
