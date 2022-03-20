@@ -1,6 +1,6 @@
 # Next Greater Element I
 
-The problem description on leetcode is complete garbage. Basically, you're given two arrays, nums1 and nums2. nums1 is a subset of nums2. For each element in nums1, find the same element in nums2 and then find an element to the right of it that's greater than it. Store the greater element in an output array. If no such element exists, store -1.
+The problem description on leetcode is complete garbage. Basically, you're given two arrays, nums1 and nums2. nums1 is a subset of nums2. For each element in nums1, find the same element in nums2 and then find an element to the right of it that's greater than it. Store the greater element in an output array. If there is no greater element to its right, store -1.
 
 ## My solution:
 
