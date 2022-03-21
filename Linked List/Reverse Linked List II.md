@@ -38,9 +38,8 @@ class Solution {
         // node will then have to point to the node that comes after "right."
         ListNode subtail = curr;
         
-        ListNode next;
         while (right > 0) {
-            next = curr.next;
+            ListNode next = curr.next;
             curr.next = prev;//reverse the link
             prev = curr;//advance
             curr = next;
