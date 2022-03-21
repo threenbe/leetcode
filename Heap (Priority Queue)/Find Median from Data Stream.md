@@ -72,3 +72,56 @@ class MedianFinder {
  * double param_2 = obj.findMedian();
  */
 ```
+
+
+## My initial solution:
+
+This is actually what I came up with first, although I think the solution with heaps is both superior and also way easier to remember and implement.
+
+The idea I had was that we use binary search to figure out where to insert the next element we receive and keep the ArrayList sorted at all times, which is a O(log(n)) operation. 
+
+The problem is that inserting an element at a given index in an ArrayList is still an O(n) operation, whereas insertion and deletion from a heap is O(log(n)). So this solution should be O(n) in time complexity overall, whereas the one above should be O(log(n)).
+
+```Java
+class MedianFinder {
+    
+    ArrayList<Integer> al;
+
+    public MedianFinder() {
+        al = new ArrayList<Integer>();
+    }
+    
+    public void addNum(int num) {
+        if (al.isEmpty()) {
+            al.add(num);
+        }
+        else {
+            int idxToInsert = Collections.binarySearch(al, num);
+            if (idxToInsert < 0) {
+                idxToInsert = -1*(idxToInsert+1);
+            }
+            al.add(idxToInsert, num);
+        }
+    }
+    
+    public double findMedian() {
+        int size = al.size();
+        int idx = size/2;
+        if ((size % 2) == 1) {
+            return (double) al.get(idx);
+        }
+        else {
+            double a = al.get(idx);
+            double b = al.get(idx-1);
+            return (a+b)/2;
+        }
+    }
+}
+
+/**
+ * Your MedianFinder object will be instantiated and called as such:
+ * MedianFinder obj = new MedianFinder();
+ * obj.addNum(num);
+ * double param_2 = obj.findMedian();
+ */
+ ```
