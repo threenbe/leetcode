@@ -14,7 +14,9 @@ https://leetcode.com/problems/sliding-window-median/
 ## My solution:
 
 I initially implemented this problem using Priority Queues (see below), but it turns out that that's not the best way to do it in Java.
+
 The PriorityQueue's remove(Object o) method has O(n) time complexity, because the PriorityQueue doesn't guarantee that its elements are sorted, aside from the root being the least or greatest element. Because of this, the overall complexity of the solution ends up being O(n\*k);
+
 TreeSet guarantees that its elements are sorted, so its remove(Object o) method has O(log(n)) time complexity (incidentally, this also means that I didn't really have to provide the two TreeSets with different Comparators, but whatever, it's more intuitive that way in my head). The problem with TreeSets is that they don't allow for duplicate elements, but we can get around that by storing the elements by their index, which will always be unique. With this approach, the overall time complexity of the solution should be O(n\*log(k)).
 
 ```Java
