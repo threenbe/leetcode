@@ -26,9 +26,7 @@ class Solution {
     
     public double[] medianSlidingWindow(int[] nums, int k) {
         //TreeSets don't allow for duplicates, but we can get around that by storing indices
-        Comparator<Integer> comparator = 
-            (a,b) -> nums[a] != nums[b] ? 
-            Integer.compare(nums[a],nums[b]) : Integer.compare(a,b);
+        Comparator<Integer> comparator = (a,b) -> nums[a] != nums[b] ? Integer.compare(nums[a],nums[b]) : Integer.compare(a,b);
         lower = new TreeSet<Integer>(comparator.reversed());//max treeset
         higher = new TreeSet<Integer>(comparator);//min treeset
 
@@ -90,9 +88,7 @@ class Solution {
     }
     
     private double getMedian(int[] nums, int k){
-        return k % 2 == 0 ?
-            ((double)nums[lower.first()]+(double)nums[higher.first()])/2.0 
-            : (double)nums[lower.first()];
+        return k % 2 == 0 ? ((double)nums[lower.first()]+(double)nums[higher.first()])/2.0 : (double)nums[lower.first()];
     }
 }
 ```
