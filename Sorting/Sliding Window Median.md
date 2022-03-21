@@ -88,7 +88,7 @@ class Solution {
     }
     
     private double getMedian(int[] nums, int k){
-        return k % 2 == 0 ? ((double)nums[lower.first()]+(double)nums[higher.first()])/2.0 : (double)nums[lower.first()];
+        return k % 2 == 0 ? ((double)nums[lower.first()]+(double)nums[higher.first()])/2 : (double)nums[lower.first()];
     }
 }
 ```
