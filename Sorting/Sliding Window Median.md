@@ -28,7 +28,7 @@ class Solution {
         //TreeSets don't allow for duplicates, but we can get around that by storing indices
         Comparator<Integer> comparator = 
             (a,b) -> nums[a] != nums[b] ? 
-            Integer.compare(nums[a],nums[b]) : Integer.compare(b,a);
+            Integer.compare(nums[a],nums[b]) : Integer.compare(a,b);
         lower = new TreeSet<Integer>(comparator.reversed());//max treeset
         higher = new TreeSet<Integer>(comparator);//min treeset
 
