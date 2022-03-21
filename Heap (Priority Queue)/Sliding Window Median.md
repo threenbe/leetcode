@@ -13,7 +13,7 @@ https://leetcode.com/problems/sliding-window-median/
 
 ## My solution:
 
-I initially implemented this problem using Priority Queues (see below), but it turns out that that's not the best way to do it in Java.
+I initially implemented this problem using Priority Queues (see below), but it turns out that that's not the best way to do it.
 
 The PriorityQueue's remove(Object o) method has O(n) time complexity, because the PriorityQueue doesn't guarantee that its elements are sorted, aside from the root being the least or greatest element. Because of this, the overall complexity of the solution ends up being O(n\*k).
 
