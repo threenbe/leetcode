@@ -6,7 +6,7 @@ In other words, return true if one of s1's permutations is the substring of s2.
 
 ## My solution:
 
-Instead of re-generating and re-populating the second character mapping array over and over for every substring of s2, we can just place our window at the first substring of s2, and then remove one preceding character and add one subsequent character, effectively sliding our window forward by 1 and receiving the next substring.
+Instead of re-generating and then re-populating the second character mapping array over and over for every substring of s2, we can just place our window at the first substring of s2, and then remove one preceding character and add one subsequent character, effectively sliding our window forward by 1 and receiving the next substring. Then we just have to compare the two character mapping arrays for each substring.
 
 ```Java
 class Solution {
