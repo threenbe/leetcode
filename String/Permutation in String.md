@@ -15,11 +15,9 @@ class Solution {
         // within s2 that contains exactly the same characters as s1, even
         // if they're out of order.
         
-        // key, val -> char, the number of times this char appears in the string
-        //Map<Character, Integer> charFreq1 = new HashMap<>();
+        // the number of times each char appears in the string
         int[] charFreq1 = new int[26];
         for (char c : s1.toCharArray()) {
-            //charFreq1.put(c, charFreq1.getOrDefault(c, 0) + 1);
             charFreq1[c - 'a']++;
         }
         int left = 0;
@@ -28,10 +26,8 @@ class Solution {
         while (right <= s2.length()) {
             String substring = s2.substring(left, right);
             boolean foundPermutation = true;
-            //Map<Character, Integer> charFreq2 = new HashMap<>();
             int[] charFreq2 = new int[26];
             for (char c : substring.toCharArray()) {
-                //charFreq2.put(c, charFreq2.getOrDefault(c, 0) + 1);
                 charFreq2[c - 'a']++;
                 if (charFreq2[c - 'a'] > charFreq1[c - 'a']) {
                     foundPermutation = false;
