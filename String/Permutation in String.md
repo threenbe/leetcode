@@ -6,7 +6,7 @@ In other words, return true if one of s1's permutations is the substring of s2.
 
 ## My solution:
 
-When we need to track character counts, it's a lot faster to index into an array than update a HashMap, which requires a hashing function, checking whether the key exists, etc.
+When we need to track character counts, it's a lot faster to index into an array than to update a HashMap, which requires a hashing function, checking whether the key exists, etc.
 
 ```Java
 class Solution {
