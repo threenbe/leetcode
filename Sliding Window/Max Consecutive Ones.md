@@ -25,6 +25,8 @@ class Solution {
 
 ## Extra (in every sense of the word) solution:
 
+Did this for fun but it's stupid, don't ever use this one.
+
 ```Java
 class Solution {
     public int findMaxConsecutiveOnes(int[] nums) {
