@@ -23,18 +23,15 @@ class Solution {
         Map<Integer, Integer> fruitFreq = new HashMap<>();
         int left = 0;
         int right = 0;
-        int currentFruitCount = 0;
         int maxFruits = 0;
         
         while (right < fruits.length) {
             int currentFruit = fruits[right++];
             fruitFreq.put(currentFruit, fruitFreq.getOrDefault(currentFruit, 0) + 1);
-            currentFruitCount++;
             
             while (fruitFreq.size() > 2) {
                 int leftmostFruit = fruits[left++];
                 int updatedOccurrences = fruitFreq.get(leftmostFruit) - 1;
-                currentFruitCount--;
                 if (updatedOccurrences == 0) {
                     fruitFreq.remove(leftmostFruit);
                 }
@@ -43,6 +40,7 @@ class Solution {
                 }
             }
             
+            int currentFruitCount = right-left;
             maxFruits = Math.max(currentFruitCount, maxFruits);
         }
         
