@@ -9,6 +9,31 @@ https://leetcode.com/problems/max-consecutive-ones-iii/
 ```Java
 class Solution {
     public int longestOnes(int[] nums, int k) {
+        int numZeroes = 0;
+        int left = 0, right = 0;
+        // Our subarray must maintain the property that numZeroes <= k.
+        // We can expand the subarray until doing so would break the above
+        // property (making numZeroes exceed k), after which we shift our entire 
+        // window to the right until our property is satisfied again.
+        while (right < nums.length) {
+            if (nums[right++] == 0) {
+                numZeroes++;
+            }
+            if (numZeroes > k && nums[left++] == 0) {
+                numZeroes--;
+            }
+        }
+        
+        return right-left;
+    }
+}
+```
+
+## My slightly different solution:
+
+```Java
+class Solution {
+    public int longestOnes(int[] nums, int k) {
         int maxLength = 0;
         int numZeroes = 0;
         int left = 0, right = 0;
