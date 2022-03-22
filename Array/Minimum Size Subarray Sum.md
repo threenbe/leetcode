@@ -15,13 +15,11 @@ class Solution {
         int currentSum = 0;
 
         while (right < nums.length) {
-            currentSum += nums[right];
-            right++;
+            currentSum += nums[right++];
             while (currentSum >= target) {
                 int currentLength = right-left;
                 minLength = Math.min(minLength, currentLength);
-                currentSum -= nums[left];
-                left++;
+                currentSum -= nums[left++];
             }
         }
         
