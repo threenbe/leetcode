@@ -7,6 +7,31 @@ Given an integer array nums, find the contiguous subarray (containing at least o
 ```Java
 class Solution {
     public int maxSubArray(int[] nums) {
+        if (nums.length == 0)
+            return 0;
+        
+        int max = nums[0];
+        int maxSoFar = nums[0];
+        
+        for (int i = 1; i < nums.length; i++) {
+            // maxSoFar represents the sum of the subarray preceding nums[i].
+            // If maxSoFar is negative, then we should start counting a new
+            // subarray starting from nums[i], because extending said subarray
+            // to include maxSoFar would only decrease the sum we're calculating.
+            maxSoFar = Math.max(maxSoFar + nums[i], nums[i]);
+            max = Math.max(max, maxSoFar);
+        }
+        
+        return max;
+    }
+}
+```
+
+## My second(?) attempt:
+
+```Java
+class Solution {
+    public int maxSubArray(int[] nums) {
         int len = nums.length;
         if (len == 0) return 0;
         //sums[3] means the maximum sum that goes up to nums[3] (starting point can be anything <= 3)
