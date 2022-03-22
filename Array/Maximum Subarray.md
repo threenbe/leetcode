@@ -17,7 +17,7 @@ class Solution {
             // maxSoFar represents the sum of the subarray preceding nums[i].
             // If maxSoFar is negative, then we should start counting a new
             // subarray starting from nums[i], because extending said subarray
-            // to include maxSoFar would only decrease the sum we're calculating.
+            // to include maxSoFar would only decrease the sum we could calculate from nums[i].
             maxSoFar = Math.max(maxSoFar + nums[i], nums[i]);
             max = Math.max(max, maxSoFar);
         }
