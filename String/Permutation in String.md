@@ -30,7 +30,7 @@ class Solution {
         int right = s1.length();
         
         while (right < s2.length()) {
-            if (mappingsAreEqual(charFreq1, charFreq2)) {
+            if (Arrays.equals(charFreq1, charFreq2)) {
                 return true;
             }
             //else, advance the window forward
@@ -40,16 +40,7 @@ class Solution {
         
         // We don't check for a match on the last iteration because we break
         // out of the loop after updating the maps, so check it here.
-        return mappingsAreEqual(charFreq1, charFreq2);
-    }
-    
-    private boolean mappingsAreEqual(int[] a1, int a2[]) {
-        for (int i = 0; i < 26; i++) {
-            if (a1[i] != a2[i]) {
-                return false;
-            }
-        }
-        return true;
+        return Arrays.equals(charFreq1, charFreq2);
     }
 }
 ```
