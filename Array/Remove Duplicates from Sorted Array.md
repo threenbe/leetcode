@@ -47,6 +47,8 @@ class Solution {
         // -> [1,2 (ignored), 2], return length 2.
         // If we had e.g. nums = [1,1,2], then we'd go from [1,2,2,3] -> [1,2,3,3]
         // and return a length of 3.
+        
+        // Time complexity: O(n)
     }
 }
 ```
