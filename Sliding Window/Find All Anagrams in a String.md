@@ -19,7 +19,7 @@ class Solution {
         // Slide a window of size p.length() across s.
         // For each substring in s, check to see if it's
         // an anagram of p. If it is, then add the window's
-        // starting index in the result arraylist.
+        // starting index to the result arraylist.
         
         int[] charFreqP = new int[26];
         int[] charFreqS = new int[26];
