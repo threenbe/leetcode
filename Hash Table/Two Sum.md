@@ -4,24 +4,20 @@ Given an array of integers, return indices of the two numbers such that they add
 
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
-## My solution:
+## My solution that uses a HashMap and passes over it once:
 
 ```Java
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int[] sol = {-1,-1};
-        for (int i = 0; i < nums.length; i++){
-            int second = target - nums[i];
-            for (int j = i+1; j < nums.length; j++){
-                if (nums[j] == second){
-                    sol[0] = i;
-                    sol[1] = j;
-                    break;
-                } 
+        // key, val -> number, index
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(target-nums[i])) {
+                return new int[]{map.get(target-nums[i]), i};
             }
-            if (sol[0] != -1) break;
+            map.put(nums[i], i);
         }
-        return sol;
+        return new int[2];
     }
 }
 ```
@@ -48,22 +44,25 @@ class Solution {
 }
 ```
 
-## My solution that uses a HashMap and passes over it once:
+
+## My solution:
 
 ```Java
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int solution[] = new int[]{-1,-1};
-        HashMap<Integer, Integer> sumMap = new HashMap<Integer, Integer>();
-        for (int i = 0; i < nums.length; i++) {
-            if (sumMap.containsKey(target-nums[i])) {
-                solution[0] = i;
-                solution[1] = sumMap.get(target-nums[i]);
-                return solution;
+        int[] sol = {-1,-1};
+        for (int i = 0; i < nums.length; i++){
+            int second = target - nums[i];
+            for (int j = i+1; j < nums.length; j++){
+                if (nums[j] == second){
+                    sol[0] = i;
+                    sol[1] = j;
+                    break;
+                } 
             }
-            sumMap.put(nums[i], i);
+            if (sol[0] != -1) break;
         }
-        return null;
+        return sol;
     }
 }
 ```
