@@ -13,7 +13,7 @@ class Solution {
         // The solution set must not have duplicate triplets.
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
-        for (int i = 0; i < nums.length && nums[i] <= 0; i++) {
+        for (int i = 0; i < nums.length-2 && nums[i] <= 0; i++) {
             // If nums[i] is a duplicate of nums[i-1] then skip it,
             // we've already evaluated triplets including it
             if (i == 0 || nums[i-1] != nums[i]) {
