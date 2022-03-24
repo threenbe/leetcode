@@ -59,3 +59,59 @@ class Solution {
     // Time complexity: O(N1+N2), where N1+N2 is the sum of number of nodes in each tree
 }
 ```
+
+## Another solution:
+
+I came up with this solution as a means to touch each point of data fewer times than in the above solution. In my first approach, we do a full traversal of both trees to form our lists, and then in the worst case (when there are no two nodes that add up to target) we traverse over every node again in the lists. Meanwhile, in this solution, we only have to traverse the first tree once to form a hashset, and then have to do a partial or at most one full traversal of the second tree to see if any of its nodes' complements are in the hashset (this lookup is an O(1) operation).
+
+That being said, my first solution was still consistently faster (not that it matters too much, both take <10ms to complete all test cases on leetcode), so I guess HashSets in Java are just that slow.
+
+```Java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean twoSumBSTs(TreeNode root1, TreeNode root2, int target) {
+        // We can take advantage of the fact that BSTs don't have duplicates and use
+        // a HashSet.
+        // Do a traversal of the first tree (the exact type of traversal doesn't really)
+        // matter here, since hashsets are unordered) and store all of its nodes in a
+        // hashset. Then, do a traversal of the second tree, and for each value, check
+        // to see if the aforementioned hashset contains its complement.
+        
+        HashSet<Integer> set = new HashSet<>();
+        inorder(root1, set);
+        return complementExists(root2, set, target);
+    }
+    
+    private void inorder(TreeNode root, Set<Integer> set) {
+        if (root == null)
+            return;
+        
+        inorder(root.left, set);
+        set.add(root.val);
+        inorder(root.right, set);
+    }
+    
+    private boolean complementExists(TreeNode root, Set<Integer> set, int target) {
+        if (root == null)
+            return false;
+        
+        return set.contains(target - root.val) || complementExists(root.left, set, target) || complementExists(root.right, set, target);
+    }
+    
+    // Time complexity: O(N1+N2), where N1+N2 is the sum of number of nodes in each tree
+}
+```
