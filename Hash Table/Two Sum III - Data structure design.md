@@ -13,7 +13,7 @@ Implement the TwoSum class:
 ```Java
 class TwoSum {
     // key, val -> number, the number of times it occurs in this data stream
-    HashMap<Integer, Integer> valueFreq;
+    private HashMap<Integer, Integer> valueFreq;
 
     public TwoSum() {
         valueFreq = new HashMap<Integer, Integer>();
