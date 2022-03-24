@@ -34,7 +34,7 @@ class Solution {
         int left = 0;
         int right = list2.size()-1;
         
-        while (left < list1.size() && right > 0) {
+        while (left < list1.size() && right >= 0) {
             int sum = list1.get(left) + list2.get(right);
             if (sum == target)
                 return true;
@@ -55,8 +55,6 @@ class Solution {
         list.add(root.val);
         inorder(root.right, list);
     }
-    
-    // Time complexity: O(N1+N2), where N1+N2 is the sum of number of nodes in each tree
 }
 ```
 
