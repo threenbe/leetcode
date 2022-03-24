@@ -66,7 +66,7 @@ I came up with this solution as a means to touch each point of data fewer times 
 
 That being said, my first solution was still consistently faster (not that it matters too much, both take <10ms to complete all test cases on leetcode), so I guess HashSets in Java are just that slow.
 
-Also, the first solution is kinda cooler anyway because it actually takes advantage of the fact that the input is a BST. This solution could be applied to any tree.
+Also, the first solution is kinda cooler anyway because it actually takes advantage of the fact that the input is a BST by doing the inorder traversal to extract a sorted list. This solution could be applied to any binary tree. Both of leetcode's solutions, funnily enough, use HashSets like this one does, but they also emphasize the use of inorder traversal when it doesn't really matter. They call out that an inorder traversal results in a sorted list, but they toss the results into a HashSet anyway. Both of their solutions could be applied to any binary tree.
 
 ```Java
 /**
@@ -94,17 +94,17 @@ class Solution {
         // to see if the aforementioned hashset contains its complement.
         
         HashSet<Integer> set = new HashSet<>();
-        inorder(root1, set);
+        traverse(root1, set);
         return complementExists(root2, set, target);
     }
     
-    private void inorder(TreeNode root, Set<Integer> set) {
+    private void traverse(TreeNode root, Set<Integer> set) {
         if (root == null)
             return;
         
-        inorder(root.left, set);
+        traverse(root.left, set);
         set.add(root.val);
-        inorder(root.right, set);
+        traverse(root.right, set);
     }
     
     private boolean complementExists(TreeNode root, Set<Integer> set, int target) {
