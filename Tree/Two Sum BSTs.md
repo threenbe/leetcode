@@ -66,6 +66,8 @@ I came up with this solution as a means to touch each point of data fewer times 
 
 That being said, my first solution was still consistently faster (not that it matters too much, both take <10ms to complete all test cases on leetcode), so I guess HashSets in Java are just that slow.
 
+Also, the first solution is kinda cooler anyway because it actually takes advantage of the fact that the input is a BST. This solution could be applied to any tree.
+
 ```Java
 /**
  * Definition for a binary tree node.
