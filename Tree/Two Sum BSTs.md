@@ -62,7 +62,7 @@ class Solution {
 
 ## Another solution:
 
-I came up with this solution as a means to touch each point of data fewer times than in the above solution. In my first approach, we do a full traversal of both trees to form our lists, and then in the worst case (when there are no two nodes that add up to target) we traverse over every node again in the lists. Meanwhile, in this solution, we only have to traverse the first tree once to form a hashset, and then have to do a partial or at most one full traversal of the second tree to see if any of its nodes' complements are in the hashset (this lookup is an O(1) operation).
+I came up with this solution as a means to touch each point of data fewer times than in the above solution. In my first approach, we do a full traversal of both trees to form our lists, and then in the worst case (when there are no two nodes that add up to target) we traverse over every node again in the lists. Meanwhile, in this solution, we only have to traverse the first tree once to form a hashset, and then we have to do a partial or at most one full traversal of the second tree to see if any of its nodes' complements are in the hashset (this lookup is an O(1) operation).
 
 That being said, my first solution was still consistently faster (not that it matters too much, both take <10ms to complete all test cases on leetcode), so I guess HashSets in Java are just that slow.
 
