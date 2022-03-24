@@ -109,7 +109,8 @@ class Solution {
         if (root == null)
             return false;
         
-        return set.contains(target - root.val) 
+        return 
+            set.contains(target - root.val) 
             || complementExists(root.left, set, target) || complementExists(root.right, set, target);
     }
     
