@@ -109,7 +109,8 @@ class Solution {
         if (root == null)
             return false;
         
-        return set.contains(target - root.val) || complementExists(root.left, set, target) || complementExists(root.right, set, target);
+        return set.contains(target - root.val) 
+            || complementExists(root.left, set, target) || complementExists(root.right, set, target);
     }
     
     // Time complexity: O(N1+N2), where N1+N2 is the sum of number of nodes in each tree
