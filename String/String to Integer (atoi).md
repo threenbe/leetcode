@@ -10,7 +10,59 @@ If the first sequence of non-whitespace characters in str is not a valid integra
 
 If no valid conversion could be performed, a zero value is returned.
 
-## My solution:
+## My Java solution:
+
+```Java
+class Solution {
+    public int myAtoi(String s) {
+        int result = 0;
+        int sign = 1;
+        boolean startedEval = false;
+        for (Character c : s.toCharArray()) {
+            //ignore leading whitespace
+            if (!startedEval) {
+                if (c == ' ') {
+                    continue;
+                }
+                //started evaluating a number
+                else if (c == '+' || c == '-') {
+                    //start eval
+                    sign = (c == '+') ? 1 : -1;
+                    startedEval = true;
+                    continue;
+                }
+                else if (Character.isDigit(c)) {
+                    startedEval = true;
+                }
+                //don't ignore leading non-whitespace/non-digit
+                else {
+                    break;
+                }
+            }
+            
+            if (startedEval) {
+                if (Character.isDigit(c)) {
+                    int digit = c - '0';
+                    //check if upcoming result is in range
+                    if (result > Integer.MAX_VALUE/10 
+                        || digit > Integer.MAX_VALUE - result*10) {
+                        return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+                    }
+                    result = result*10 + digit;
+                }
+                else {
+                    //ignore non-digits after evaluation of a number begins
+                    break;
+                }
+            }
+        }
+        
+        return result*sign;
+    }
+}
+```
+
+## My C solution:
 
 ```C
 int myAtoi(char* str) {
