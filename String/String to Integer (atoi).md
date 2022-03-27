@@ -12,6 +12,8 @@ If no valid conversion could be performed, a zero value is returned.
 
 ## My Java solution:
 
+The way I did the C solution is probably better, might try that again in Java
+
 ```Java
 class Solution {
     public int myAtoi(String s) {
