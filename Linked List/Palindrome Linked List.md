@@ -39,5 +39,8 @@ class Solution {
         
         return true;
     }
+    
+    // Time complexity: O(n)
+    // Space complexity: O(n)
 }
 ```
