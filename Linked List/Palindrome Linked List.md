@@ -4,6 +4,70 @@ Given the head of a singly linked list, return true if it is a palindrome.
 
 https://leetcode.com/problems/palindrome-linked-list/
 
+## Reverse the second half of the list:
+
+```Java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        // Get the middle of the linked list
+        // Reverse the second half of the linked list
+        // Check the nodes of the first and second halves one-by-one
+        ListNode endOfFirstHalf = getMiddle(head);
+        ListNode startOfSecondHalf = reverseList(endOfFirstHalf);
+        
+        ListNode p1 = head;
+        ListNode p2 = startOfSecondHalf;
+        while (p2 != null) {
+            if (p1.val != p2.val) {
+                return false;
+            }
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        
+        return true;
+    }
+    
+    private ListNode getMiddle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+    
+    private ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        while (curr != null) {
+            // save reference to the next node
+            ListNode next = curr.next;
+            // have the current node point to the previous one
+            curr.next = prev;
+            // advance forward in the list
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+    
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+}
+```
+
 ## ArrayList/Two Pointer solution:
 
 ```Java
