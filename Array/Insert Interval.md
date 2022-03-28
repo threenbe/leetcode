@@ -13,8 +13,6 @@ https://leetcode.com/problems/insert-interval/
 ```Java
 class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
-        
-        
         LinkedList<int[]> list = new LinkedList<>();
         //First, add all the intervals that start before newInterval
         int idx;
