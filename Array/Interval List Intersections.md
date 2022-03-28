@@ -22,24 +22,6 @@ class Solution {
         
         LinkedList<int[]> output = new LinkedList<>();
         
-        // Example:
-        // [[0,2],[5,10],[13,23],[24,25]], [[1,5],[8,12],[15,24],[25,26]]
-        // firstInterval = [0,2], secondInterval = [1,5] -> newInterval = [1,2]
-        // [[5,10],[13,23],[24,25]], [[1,5],[8,12],[15,24],[25,26]], output: [[1,2]]
-        // firstInterval = [1,5], secondInterval = [5,10] -> newInterval[5,5]
-        // [[5,10],[13,23],[24,25]], [[8,12],[15,24],[25,26]], output: [[1,2],[5,5]]
-        // firstInterval = [5,10], secondInterval = [8,12] -> newInterval [8, 10]
-        // [[13,23],[24,25]], [[8,12],[15,24],[25,26]], output: [[1,2],[5,5],[8,10]]
-        // firstInterval = [8,12], secondInterval = [13,23] -> newInterval = none
-        // [[13,23],[24,25]], [[15,24],[25,26]], output [[1,2],[5,5],[8,10]]
-        // firstInterval = [13,23], secondInterval = [15,24] -> newInterval = [15,23]
-        // [[24,25]], [[15,24],[25,26]], output: [[1,2],[5,5],[8,10],[15,23]]
-        // firstInterval = [15,24], secondInterval = [24,25] -> newInterval = [24,24]
-        // [[24,25]], [[25,26]], output: [[1,2],[5,5],[8,10],[15,23],[24,24]]
-        // firstInterval = [24,25], secondInterval = [25,26] -> newInterval = [25,25]
-        // [], [[25,26]], output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
-        // loop terminates
-        
         while (firstIdx < firstLength && secondIdx < secondLength) {
             // firstInterval should always be the one that starts sooner
             int[] firstInterval = firstList[firstIdx][0] < secondList[secondIdx][0] ?
@@ -68,6 +50,24 @@ class Solution {
         
         return output.toArray(new int[output.size()][2]);
     }
+    
+    // Example:
+    // [[0,2],[5,10],[13,23],[24,25]], [[1,5],[8,12],[15,24],[25,26]]
+    // firstInterval = [0,2], secondInterval = [1,5] -> newInterval = [1,2]
+    // [[5,10],[13,23],[24,25]], [[1,5],[8,12],[15,24],[25,26]], output: [[1,2]]
+    // firstInterval = [1,5], secondInterval = [5,10] -> newInterval[5,5]
+    // [[5,10],[13,23],[24,25]], [[8,12],[15,24],[25,26]], output: [[1,2],[5,5]]
+    // firstInterval = [5,10], secondInterval = [8,12] -> newInterval [8, 10]
+    // [[13,23],[24,25]], [[8,12],[15,24],[25,26]], output: [[1,2],[5,5],[8,10]]
+    // firstInterval = [8,12], secondInterval = [13,23] -> newInterval = none
+    // [[13,23],[24,25]], [[15,24],[25,26]], output [[1,2],[5,5],[8,10]]
+    // firstInterval = [13,23], secondInterval = [15,24] -> newInterval = [15,23]
+    // [[24,25]], [[15,24],[25,26]], output: [[1,2],[5,5],[8,10],[15,23]]
+    // firstInterval = [15,24], secondInterval = [24,25] -> newInterval = [24,24]
+    // [[24,25]], [[25,26]], output: [[1,2],[5,5],[8,10],[15,23],[24,24]]
+    // firstInterval = [24,25], secondInterval = [25,26] -> newInterval = [25,25]
+    // [], [[25,26]], output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
+    // loop terminates
     
     // Time complexity: O(n) where n is the number of elements in both lists
     // Space complexity: O(n) for the space used to hold the output
