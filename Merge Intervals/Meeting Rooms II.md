@@ -55,7 +55,7 @@ class Solution {
         
         // [[0,30],[5,10],[15,20],[12,25]] -> needs 3 rooms
         // pq = [30] -> pq = [10,30] -> evict 10, pq = [20,30] -> pq = [20,25,30], size 3
-        // Let's expand the input to [[0,30][5,10],[15,20],[12,25],[60,90],[80,100]], 
+        // Let's expand the input to [[0,30],[5,10],[15,20],[12,25],[60,90],[80,100]], 
         // still needs only 3 rooms
         // pq = [20,25,30] -> evict 20, pq = [25,30,60] -> evict 20, [30,60,80]
     }
