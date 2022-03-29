@@ -42,6 +42,7 @@ class Solution {
         inorder(root.right, list);
     }
     // Time complexity: O(n), every node is visited
-    // Space complexity: O(n), for the space taken up by the call stack during recursion as well as the ordered list of nodes that we construct
+    // Space complexity: O(n), for the space taken up by the call stack during recursion,
+    // as well as the ordered list of nodes that we construct
 }
 ```
