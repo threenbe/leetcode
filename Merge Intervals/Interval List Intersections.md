@@ -27,8 +27,8 @@ class Solution {
         // you need the maximum of the two intervals' starting points and the minimum of
         // their end points.
         // You can do this for any two intervals, and you'll know that the resulting interval
-        // is a valid intersection if the minimum of the starting points is less than the
-        // maximum of the end points.
+        // is a valid intersection if the minimum of the starting points is less than or equal to
+        // the maximum of the end points.
         // For example, take [0,2] and [1,5]. A possible intersection is [max(0,1),min(2,5)]
         // which is [1,2]. 1 < 2, so this is a valid intersection.
         // On the other hand, take [8,12] and [13,23]. [max(8,13),min(12,23)] is [13,12],
