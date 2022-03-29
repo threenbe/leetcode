@@ -17,6 +17,56 @@ class Solution {
     public int[][] intervalIntersection(int[][] firstList, int[][] secondList) {
         int firstLength = firstList.length;
         int secondLength = secondList.length;
+        int idx1 = 0;
+        int idx2 = 0;
+        
+        LinkedList<int[]> output = new LinkedList<>();
+        
+        // I overcomplicated my last solution.
+        // Based on what I did there, you can see that in order to get an intersection,
+        // you need the maximum of the two intervals' starting points and the minimum of
+        // their end points.
+        // You can do this for any two intervals, and you'll know that the resulting interval
+        // is a valid intersection if the minimum of the starting points is less than the
+        // maximum of the end points.
+        // For example, take [0,2] and [1,5]. A possible intersection is [max(0,1),min(2,5)]
+        // which is [1,2]. 1 < 2, so this is a valid intersection.
+        // On the other hand, take [8,12] and [13,23]. [max(8,13),min(12,23)] is [13,12],
+        // which is not a valid intersection since 13 > 12.
+        // Also like before, after each evaluation, we keep the interval that has a larger
+        // endpoint, since this is the one that might have an intersection with the next
+        // interval from its opposing list.
+        while (idx1 < firstLength && idx2 < secondLength) {
+            int firstVal = Math.max(firstList[idx1][0], secondList[idx2][0]);
+            int secondVal = Math.min(firstList[idx1][1], secondList[idx2][1]);
+            if (firstVal <= secondVal) {
+                // found an intersection
+                output.add(new int[]{ firstVal, secondVal });
+            }
+            
+            if (firstList[idx1][1] > secondList[idx2][1]) {
+                idx2++;
+            }
+            else {
+                idx1++;
+            }
+        }
+        
+        return output.toArray(new int[output.size()][2]);
+    }
+    
+    // Time complexity: O(n) where n is the number of elements in both lists
+    // Space complexity: O(n) for the space used to hold the output
+}
+```
+
+## My initial solution:
+
+```Java
+class Solution {
+    public int[][] intervalIntersection(int[][] firstList, int[][] secondList) {
+        int firstLength = firstList.length;
+        int secondLength = secondList.length;
         int firstIdx = 0;
         int secondIdx = 0;
         
