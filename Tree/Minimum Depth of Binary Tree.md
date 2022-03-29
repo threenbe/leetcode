@@ -41,6 +41,6 @@ class Solution {
     }
     
     // Time complexity: O(n), we visit each node at least once
-    
+    // Space complexity: O(n)
 }
 ```
