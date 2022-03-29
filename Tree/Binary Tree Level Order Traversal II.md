@@ -9,7 +9,7 @@ https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
 I initially had the solution for the top-down level order traversal in mind, so my brain immediately went "use a stack to do it backwards" for my first solution.
 But all you really need is a data structure that can add each successive level to the front, so that by the end, the first entry in the list is the last level, and so on. A doubly-linked list allows you to add elements at the head in O(1) time.
 
-Incidentally, with Java's LinkedList, literally all you have to change here to get the solution to the top-down BFS problem is change the "addFirst" to "addLast."
+Incidentally, with Java's LinkedList, literally all you have to change here to get the solution for the top-down BFS problem is change the "addFirst" to "addLast."
 
 ```Java
 /**
