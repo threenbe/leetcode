@@ -10,7 +10,7 @@ https://leetcode.com/problems/minimum-depth-of-binary-tree/
 
 ## My iterative solution (BFS):
 
-Visits less nodes than the DFS solution on average (which always visits all of them) and runs much faster on average overall.
+Visits fewer nodes than the DFS solution on average (which always visits all of them) and runs much faster on average overall.
 
 ```Java
 /**
