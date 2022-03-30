@@ -12,7 +12,52 @@ A leaf node is a node with no children.
 
 https://leetcode.com/problems/sum-root-to-leaf-numbers/
 
-## My solution:
+# My solution:
+
+```Java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    int sum = 0;
+    
+    public int sumNumbers(TreeNode root) {
+        generatePathNums(root, 0);
+        return sum;
+    }
+    
+    private void generatePathNums(TreeNode root, int num) {
+        if (root == null)
+            return;
+        
+        if (root.left == null && root.right == null) {
+            sum += num*10 + root.val;
+        }
+        else {
+            if (root.left != null)
+                generatePathNums(root.left, num*10 + root.val);
+            if (root.right != null)
+                generatePathNums(root.right, num*10 + root.val);
+        }
+    }
+    // Time complexity: O(n)
+    // Space complexity: O(h) for tree height
+}
+```
+
+## My initial solution:
 
 ```Java
 /**
