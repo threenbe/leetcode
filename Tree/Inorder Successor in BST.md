@@ -23,8 +23,8 @@ https://leetcode.com/problems/inorder-successor-in-bst/
 class Solution {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
         // If p is greater than root, then we know that p's successor
-        // cannot possibly be in the root's left subtree. This also goes for
-        // when p is the root.
+        // cannot possibly be in the root's left subtree, nor can it be
+        // the root itself. This also goes for when p is the root.
         // If p is less than root, then p is in the root's left subtree. Its
         // successor may be one of the nodes in the left subtree, or it
         // may be the root itself.
