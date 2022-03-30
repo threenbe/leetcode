@@ -35,5 +35,9 @@ class Solution {
         
         return hasPathSum(root.left, targetSum - root.val) || hasPathSum(root.right, targetSum - root.val);
     }
+    // Time complexity: O(n)
+    // Space complexity: O(n) if the tree is completely unbalanced (the call stack would need
+    // to hold n calls at once during recursion), but if the tree is completely balanced then
+    // it's O(log(n)) where log(n) is the height of the tree.
 }
 ```
