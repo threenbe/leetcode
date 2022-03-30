@@ -31,7 +31,7 @@ https://leetcode.com/problems/sum-root-to-leaf-numbers/
  * }
  */
 class Solution {
-    int sum = 0;
+    private int sum = 0;
     
     public int sumNumbers(TreeNode root) {
         generatePathNums(root, 0);
