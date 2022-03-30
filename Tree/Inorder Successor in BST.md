@@ -66,7 +66,7 @@ class Solution {
             - Root is now null. The successor must therefore be 5.
             
             Let's say p = 2 instead. Then, when we reach 3, we'd overwrite the successor with
-            3 and go right. But 2 has no right subtree, so its successor must be 3.
+            3 and go left to 2. But 2 has no right subtree, so its successor must be 3.
             Let's say p = 6. At the top root node 5, we'd discard the entire left subtree
             because 6 > 5, and go right. We'd reach 6, but 6 has no right subtree, meaning
             that it is the max node and therefore has no successor. We return null.
