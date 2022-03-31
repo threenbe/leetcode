@@ -52,7 +52,7 @@ class Solution {
 
 ## Wrote the above solution in Python too:
 
-```Python3
+```Python
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
