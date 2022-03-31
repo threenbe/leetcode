@@ -49,3 +49,31 @@ class Solution {
     // Space complexity: O(n)
 }
 ```
+
+## Wrote the above solution in Python too:
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findValidSequence(self, root: Optional[TreeNode], arr: List[int], idx: int) -> bool:
+        '''Return True if valid sequence found, else return False'''
+        if root is None or idx >= len(arr):
+            return False
+        
+        if root.val == arr[idx]:
+            # Valid sequences must be root-to-leaf paths
+            if root.left is None and root.right is None and idx == (len(arr)-1):
+                return True
+            else:
+                return self.findValidSequence(root.left, arr, idx+1) or self.findValidSequence(root.right, arr, idx+1)
+        else:
+            return False
+        
+    def isValidSequence(self, root: Optional[TreeNode], arr: List[int]) -> bool:
+        return self.findValidSequence(root, arr, 0)
+```
