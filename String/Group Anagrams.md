@@ -31,6 +31,51 @@ class Solution:
     # Space complexity: O(n*k)
 ```
 
+## The above solution in Java (maybe I should start using Python as my default language for interviews...):
+
+```Java
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        /* Map each string to a character count representation.
+         * If two strings are anagrams of each other, then they'll
+         * be mapped to the same character count representation.
+         */
+        if (strs.length == 0)
+            return new ArrayList<List<String>>();
+        
+        // key, val -> string representation of char count, strings that have this char count
+        // A key that looks like "1,2,0..." for example means that it represents strings with
+        // 1 'a', 2 'b's, 0 'c's, and so on.
+        Map<String, List<String>> anagramMapping = new HashMap<>();
+        
+        for (String str : strs) {
+            int[] charMap = new int[26];
+            for (char c : str.toCharArray()) {
+                charMap[c - 'a']++;
+            }
+            
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 26; i++) {
+                sb.append(charMap[i]);
+                sb.append(',');
+            }
+            
+            String charCount = sb.toString();
+            if (!anagramMapping.containsKey(charCount))
+                anagramMapping.put(charCount, new ArrayList<String>());
+            anagramMapping.get(charCount).add(str);
+        }
+        
+        return new ArrayList<List<String>>(anagramMapping.values());
+    }
+    
+    // Time complexity: O(n*k) where is the number of strings, and k is the length
+    // of each string. We iterate over the list of strings (O(n)) and then we iterate 
+    // over each individual string to count its characters (O(k)).
+    // Space complexity: O(n*k)
+}
+```
+
 ## My initial solution:
 
 ```Java
