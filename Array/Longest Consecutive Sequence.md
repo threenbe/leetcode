@@ -24,9 +24,8 @@ class Solution {
                 int currentLength = 1;
                 
                 //Count how long a consecutive sequence starting from this number is.
-                while (set.contains(num+1)) {
+                while (set.contains(++num)) {
                     currentLength++;
-                    num++;
                 }
                 
                 maxLength = Math.max(maxLength, currentLength);
