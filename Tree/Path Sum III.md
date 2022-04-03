@@ -64,6 +64,9 @@ class Solution {
         traversePaths(root, 0, targetSum);
         return count;
     }
+    
+    // Time complexity: O(n)
+    // Space complexity: O(n)
 }
 ```
 
