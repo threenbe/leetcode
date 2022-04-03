@@ -6,6 +6,67 @@ The path does not need to start or end at the root or a leaf, but it must go dow
 
 https://leetcode.com/problems/path-sum-iii/
 
+## My solution:
+
+```Java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    private int count = 0;
+    // key, val -> prefix sum, the number of times this sum has occurred
+    private HashMap<Integer, Integer> map = new HashMap<>();
+    
+    // DFS
+    private void traversePaths(TreeNode root, int currentSum, int targetSum) {
+        // We can solve this with the prefix sum pattern.
+        // If we're traveling down a tree, and we encounter a prefix sum
+        // equal to our targetSum, then we increment our count. Also, if 
+        // our current prefix sum minus the targetSum has been encountered
+        // before, then that means there is also a subpath on our current
+        // path that sums to targetSum.
+        // One thing to keep in mind is that each parent-leaf path needs to
+        // be evaluated separately.
+        
+        if (root == null)
+            return;
+        
+        currentSum += root.val;
+        
+        if (currentSum == targetSum)
+            count++;
+        
+        count += map.getOrDefault(currentSum - targetSum, 0);
+        
+        map.put(currentSum, map.getOrDefault(currentSum, 0) + 1);
+        
+        if (root.left != null)
+            traversePaths(root.left, currentSum, targetSum);
+        if (root.right != null)
+            traversePaths(root.right, currentSum, targetSum);
+        
+        map.put(currentSum, map.get(currentSum) - 1);
+    }
+    
+    public int pathSum(TreeNode root, int targetSum) {
+        traversePaths(root, 0, targetSum);
+        return count;
+    }
+}
+```
+
 ## My initial solution:
 
 ```Java
