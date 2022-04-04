@@ -76,3 +76,54 @@ class Solution {
     // processing/processed sets will grow to hold up to v nodes at a time.
 }
 ```
+
+## Another way:
+
+Since the nodes in this graph are all just numbered between 0 to numCourses-1, we don't have to use Sets to process the nodes. Doesn't really affect much though, seems just a tad faster on average but yeah.
+
+```Java
+class Solution {
+    private Map<Integer, List<Integer>> adjacencyList = new HashMap<>();
+    
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        //construct adjacency list
+        for (int i = 0; i < numCourses; i++) {
+            adjacencyList.put(i, new ArrayList<Integer>());
+        }
+        for (int[] edge : prerequisites) {
+            int src = edge[1];
+            int dst = edge[0];
+            adjacencyList.get(src).add(dst);
+        }
+        
+        // see if cycle exists
+        int[] processing = new int[numCourses];
+        int[] processed = new int[numCourses];
+        for (int i = 0; i < numCourses; i++) {
+            if (hasCycle(i, processing, processed)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    private boolean hasCycle(int course, int[] processing, int[] processed) {
+        if (processed[course] == 1)
+            return false;
+        
+        processing[course] = 1;
+        
+        List<Integer> neighbors = adjacencyList.get(course);
+        for (Integer neighbor : neighbors) {
+            if (processing[neighbor] == 1)
+                return true;
+            if (hasCycle(neighbor, processing, processed))
+                return true;
+        }
+        
+        processing[course] = 0;
+        processed[course] = 1;
+        return false;
+    }
+}
+```
