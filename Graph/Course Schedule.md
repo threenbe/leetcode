@@ -29,7 +29,7 @@ class Solution {
             adjacencyList.get(src).add(dst);
         }
         
-        // find cycle, return true if found, else false
+        // find cycle, return false if found, else true
         Set<Integer> processing = new HashSet<>();
         Set<Integer> processed = new HashSet<>();
         for (int i = 0; i < numCourses; i++) {
