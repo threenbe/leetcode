@@ -8,6 +8,8 @@ Return true if you can finish all courses. Otherwise, return false.
 
 https://leetcode.com/problems/course-schedule/
 
+## My solution:
+
 ```Java
 class Solution {
     // key, val -> course, list of courses for which the key 'course' is a prereq for
