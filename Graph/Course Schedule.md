@@ -79,7 +79,7 @@ class Solution {
 
 ## Another way:
 
-Since the nodes in this graph are all just numbered from 0 to numCourses-1, we don't have to use Sets to process the nodes. Doesn't really affect much though, seems just a tad faster on average but yeah.
+Since the nodes in this graph are all just numbered from 0 to numCourses-1, we don't have to use HashSets to process the nodes. Doesn't really affect much though, seems just a tad faster on average but yeah.
 
 ```Java
 class Solution {
