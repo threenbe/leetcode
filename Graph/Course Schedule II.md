@@ -46,29 +46,29 @@ class Solution {
     /* 
      * returns true if it detects a cycle, else returns false
     */
-	private boolean topologicalSort(int course, Set<Integer> processing, 
+    private boolean topologicalSort(int course, Set<Integer> processing, 
                                     Set<Integer> processed, Stack<Integer> stack) {
 	
-		if (processed.contains(course)) {
-			return false;
-		}
+        if (processed.contains(course)) {
+            return false;
+        }
 
-		processing.add(course);
+        processing.add(course);
 
-		List<Integer> neighbors = adjacencyList.getOrDefault(course, new ArrayList());
-		for (Integer neighbor : neighbors) {
-			if (processing.contains(neighbor)) {
-				return true;
-			}
-			if (topologicalSort(neighbor, processing, processed, stack)) {
-				return true;
-			}
-		}
+        List<Integer> neighbors = adjacencyList.getOrDefault(course, new ArrayList());
+        for (Integer neighbor : neighbors) {
+            if (processing.contains(neighbor)) {
+                return true;
+            }
+            if (topologicalSort(neighbor, processing, processed, stack)) {
+                return true;
+            }
+        }
 
-		processing.remove(course);
-		processed.add(course);
-		stack.push(course);
-		return false;
+        processing.remove(course);
+        processed.add(course);
+        stack.push(course);
+        return false;
     }
     // Time complexity: O(v+e) where v is the number of courses (vertices) and e is the number
     // of edges in the graph. Constructing the adjacency list takes O(e) time, and traversing
