@@ -6,7 +6,79 @@ There are a total of numCourses courses you have to take, labeled from 0 to numC
 
 Return the ordering of courses you should take to finish all courses. If there are many valid answers, return any of them. If it is impossible to finish all courses, return an empty array.
 
-## My solution
+## My solution:
+
+```Java
+class Solution {
+	private Map<Integer, List<Integer>> adjacencyList = new HashMap();
+
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        // [a,b] means b -> a in a graph
+        // construct adjacency list first
+        for (int[] edge : prerequisites) {
+            int src = edge[1];
+            int dst = edge[0];
+            List<Integer> list = adjacencyList.getOrDefault(src, new ArrayList());
+            list.add(dst);
+            adjacencyList.put(src, list);
+        }
+
+        // do a topological sort on the graph to get the course order
+        // if we detect a cycle at any point, then there is no valid order
+        Set<Integer> processing = new HashSet();
+        Set<Integer> processed = new HashSet();
+        Stack<Integer> stack = new Stack();
+        for (int i = 0; i < numCourses; i++) {
+            if (topologicalSort(i, processing, processed, stack)) {
+                return new int[0];
+            }
+        }
+
+        int[] courses = new int[stack.size()];
+        int i = 0;
+        while (!stack.isEmpty()) {
+            courses[i++] = stack.pop();
+        }
+
+        return courses;
+    }
+
+    /* 
+     * returns true if it detects a cycle, else returns false
+    */
+	private boolean topologicalSort(int course, Set<Integer> processing, 
+                                    Set<Integer> processed, Stack<Integer> stack) {
+	
+		if (processed.contains(course)) {
+			return false;
+		}
+
+		processing.add(course);
+
+		List<Integer> neighbors = adjacencyList.getOrDefault(course, new ArrayList());
+		for (Integer neighbor : neighbors) {
+			if (processing.contains(neighbor)) {
+				return true;
+			}
+			if (topologicalSort(neighbor, processing, processed, stack)) {
+				return true;
+			}
+		}
+
+		processing.remove(course);
+		processed.add(course);
+		stack.push(course);
+		return false;
+    }
+    // Time complexity: O(v+e) where v is the number of courses (vertices) and e is the number
+    // of edges in the graph. Constructing the adjacency list takes O(e) time, and traversing
+    // the graph takes O(v+e) time. 
+    // Space complexity: O(v+e). The adjacency list takes up O(e) space to hold the edges. The
+    // sets/stack will hold up to O(v) nodes at any given point. 
+}
+```
+
+## My solution:
 
 ```Java
 class Solution {
