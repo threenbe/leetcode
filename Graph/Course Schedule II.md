@@ -10,7 +10,7 @@ Return the ordering of courses you should take to finish all courses. If there a
 
 ```Java
 class Solution {
-	private Map<Integer, List<Integer>> adjacencyList = new HashMap();
+    private Map<Integer, List<Integer>> adjacencyList = new HashMap();
 
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         // [a,b] means b -> a in a graph
