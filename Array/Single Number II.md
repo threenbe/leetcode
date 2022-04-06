@@ -39,9 +39,9 @@ class Solution {
     // Encounter 2 thrice -> seen_once = 00 00, seen_twice = 00 00 
     // now, how do we do this^
     // For simplicity's sake let's just examine the bit on its own.
-    // Let's define the bit as an "input" 1. s1 and s2 are seen_once and seen_twice after
-    // the input is encountered once. s1' and s2' are seen_once and seen_twice after the input
-    // is encountered twice. Let's fill out a truth table based on the above.
+    // Let's define the bit as an "input" 1. s1 and s2 are seen_once and seen_twice before 
+    // they encounter the input at each step. s1' and s2' are seen_once and seen_twice after
+    // they encounter the input at each step. Let's fill out a truth table based on the above.
     /* s1 | s2 | input | s1' | s2'
         0    0     0      0     0
         1    0     0      1     0
