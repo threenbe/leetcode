@@ -4,6 +4,31 @@ Given an array nums containing n distinct numbers in the range [0, n], return th
 
 https://leetcode.com/problems/missing-number/
 
+## Bit manipulation:
+
+```Java
+class Solution {
+    public int missingNumber(int[] nums) {
+        int missingNumber = 0;
+        int n = nums.length;
+        
+        // XOR with every number that should be there.
+        for (int i = 0; i <= n; i++)
+            missingNumber ^= i;
+        
+        // Then filter out the numbers that are actually there.
+        for (int i = 0; i < n; i++)
+            missingNumber ^= nums[i];
+        
+        // You're left with the number that's missing.
+        return missingNumber;
+    }
+    
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+}
+```
+
 ## Cyclic sort solution:
 
 ```Java
