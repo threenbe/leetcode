@@ -6,6 +6,44 @@ Follow up: Could you do it without extra space and in O(n) runtime? You may assu
 
 https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
 
+## Cyclic sort solution:
+
+```Java
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        // Cyclic sort solution
+        int n = nums.length;
+        int i = 0;
+        while (i < n) {
+            int j = nums[i]-1; // If, say, nums[i] is 5, then we calculate 5's correct index as 4
+            // Check if nums[i] is indeed where it should be (note that this won't swap 
+            // duplicates, which we want, otherwise we'd be stuck swapping them forever)
+            if (nums[i] != nums[j])
+                swap(nums, i, j);
+            else
+                i++;
+        }
+        
+        List<Integer> output = new ArrayList<>();
+        for (i = 0; i < n; i++) {
+            if (nums[i] != i+1)
+                output.add(i+1);
+        }
+        
+        return output;
+    }
+    
+    private void swap(int[] nums, int i1, int i2) {
+        int tmp = nums[i1];
+        nums[i1] = nums[i2];
+        nums[i2] = tmp;
+    }
+    
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+}
+```
+
 ## Solution with extra space:
 
 ```Java
