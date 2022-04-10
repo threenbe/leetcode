@@ -6,6 +6,40 @@ Follow up: Could you do it without extra space and in O(n) runtime? You may assu
 
 https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
 
+## Solution using O(1) space that restores the input array after:
+
+```Java
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        // O(1) space solution that restores the input array after.
+        // Mark values that we've seen by marking their corresponding indices
+        // as negative. After we've found our solution, we can easily revert
+        // the array back.
+        for (int i = 0; i < nums.length; i++) {
+            int index = Math.abs(nums[i])-1;
+            nums[index] = Math.abs(nums[index]) * -1;
+        }
+        
+        // build output list
+        List<Integer> output = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0)
+                output.add(i+1);
+        }
+        
+        // restore input array
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = Math.abs(nums[i]);
+        }
+        
+        return output;
+    }
+    
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+}
+```
+
 ## Cyclic sort solution:
 
 ```Java
