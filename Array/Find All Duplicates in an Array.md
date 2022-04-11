@@ -4,6 +4,45 @@ Given an integer array nums of length n where all the integers of nums are in th
 
 You must write an algorithm that runs in O(n) time and uses only constant extra space.
 
+## O(1) space solution that restores the input array after:
+```Java
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        // O(1) space solution that restores the input array after the fact.
+        // We can indicate that a number has appeared once by marking its
+        // corresponding index as negative, and we can indicate that it's
+        // appeared twice by marking its corresponding index as positive.
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            int index = Math.abs(nums[i]) - 1; // corresponding index
+            nums[index] *= -1;
+        }
+        
+        // build solution list
+        // make sure to skip indices of elements that DON'T appear in the input, since
+        // these will also be positive
+        List<Integer> duplicates = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            int index = Math.abs(nums[i]) - 1;
+            if (nums[index] > 0) {
+                duplicates.add(index+1);
+                nums[index] *= -1;
+            }
+        }
+        
+        // restore the input array
+        for (int i = 0; i < n; i++) {
+            nums[i] = Math.abs(nums[i]);
+        }
+        
+        return duplicates;
+    }
+    
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+}
+```
+
 ## Cyclic sort solution:
 
 ```Java
