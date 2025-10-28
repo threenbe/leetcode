@@ -2,6 +2,75 @@
 
 Given a string s, find the length of the longest substring without repeating characters.
 
+## Nicer Python solution (although with Leetcode's test cases at least, there's virtually no performance difference...)
+
+```python3
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        sLen = len(s)
+        # This essentially helps tracks the current no-dupe substring
+        # key, val -> char, index
+        charMap = dict()
+        left = 0
+        right = 0
+        maxLen = 0
+        # abcabcbbdcfg
+        #        i    j
+        # i = 7, j = 12
+        # set: b, d, c, f, g
+        # currentLen = 5
+        # maxLen = 5
+        while right < sLen:
+            if s[right] in charMap:
+                # Since the rightmost index has stopped on a duplicate character, we can
+                # advance the leftmost index past the first occurrence of that character.
+                # When we advance the sliding window, we don't remove entries from the map
+                # because any old entries outside of the current window can simply be ignored
+                # (see the max() operation). This cuts down on unnecessary time spent removing
+                # lots of characters from the map as we advance the left index one-by-one.
+                newLeft = charMap[s[right]]+1
+                left = max(newLeft, left)
+            charMap[s[right]] = right
+            right += 1
+            maxLen = max(maxLen, right-left)
+        return maxLen
+```
+
+## Python solution (wow, I went for the least efficient of my old solutions; I sure am rusty)
+
+```python3
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        sLen = len(s)
+        # This essentially tracks the current no-dupe substring
+        charSet = set()
+        i = 0
+        j = 0
+        maxLen = 0
+        # abcabcbbdcfg
+        #        i    j
+        # i = 7, j = 12
+        # set: b, d, c, f, g
+        # currentLen = 5
+        # maxLen = 5
+        while j < sLen and i < sLen:
+            if s[j] not in charSet:
+                # Haven't run into a dupe yet, so advance substring length
+                charSet.add(s[j])
+                j += 1
+                # Check if this is the longest substring with no dupes so far
+                if (j-i) > maxLen:
+                    maxLen = j-i
+            else:
+                # Now that there's a dupe somewhere in the substring, we advance
+                # the front of the sliding window until there are no more dupes,
+                # then we can keep checking to see a longer no-dupe substring can
+                # form later down the line
+                charSet.remove(s[i])
+                i += 1
+        return maxLen
+```
+
 ## My solution:
 
 ```Java
