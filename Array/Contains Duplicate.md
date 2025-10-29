@@ -4,7 +4,7 @@ Given an integer array nums, return `true` if any value appears at least twice i
 
 https://leetcode.com/problems/contains-duplicate/description/
 
-## My initial solution:
+## My solution:
 
 ```python3
 class Solution:
