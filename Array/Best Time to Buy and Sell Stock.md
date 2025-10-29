@@ -6,7 +6,7 @@ You want to maximize your profit by choosing a single day to buy one stock and c
 
 Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return `0`.
 
-## Sliding window solution; very time-consuming:
+## Sliding window solution:
 
 ```python3
 class Solution:
@@ -18,15 +18,14 @@ class Solution:
         #         ^     ^   
         buy = 0
         sell = 1
-        while sell in range(1, len(prices)):
+        for sell in range(len(prices)):
             profit = prices[sell] - prices[buy]
             if (profit < 0):
                 buy = sell
-                sell += 1
             else:
                 maxProfit = profit if (profit > maxProfit) else maxProfit
-                sell += 1
         return maxProfit
+
 ```
 
 ## My brute force solution (times out in larger test cases):
