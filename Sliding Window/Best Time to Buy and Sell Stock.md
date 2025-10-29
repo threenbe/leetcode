@@ -1,0 +1,57 @@
+# Best Time to Buy and Sell Stock
+
+You are given an array `prices` where `prices[i]` is the price of a given stock on the `ith` day.
+
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return `0`.
+
+## Nicest solution (still essentially sliding window):
+
+```python3
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        maxProfit = 0
+        # [7, 1, 5, 3, 6, 4]
+        #     ^           ^
+        # [6, 17, 1, 5, 9]
+        #         ^     ^   
+        buyPrice = prices[0]
+        for sellPrice in prices[1:]:
+            if buyPrice > sellPrice:
+                buyPrice = sellPrice # move forward to get a better entry
+            maxProfit = max(maxProfit, sellPrice - buyPrice)
+        return maxProfit
+```
+
+## Sliding window solution:
+
+```python3
+    def maxProfit(self, prices: List[int]) -> int:
+        maxProfit = 0
+        # [7, 1, 5, 3, 6, 4]
+        #     ^           ^ <-- 1,6 is the best play
+        # [6, 17, 1, 5, 9]
+        #         ^     ^   <-- operation essentially ends here, but we found that 6,17 is the best play
+        buy = 0
+        for sell in range(1, len(prices)):
+            profit = prices[sell] - prices[buy]
+            if (profit < 0):
+                buy = sell
+            else:
+                maxProfit = profit if (profit > maxProfit) else maxProfit
+        return maxProfit
+```
+
+## My brute force solution (times out in larger test cases):
+
+```python3
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        maxProfit = 0
+        for i in range(len(prices)):
+            for j in range(i+1, len(prices)):
+                profit = prices[j] - prices[i]
+                maxProfit = profit if (profit > maxProfit) else maxProfit
+        return maxProfit
+```
