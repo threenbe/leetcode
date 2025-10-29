@@ -14,7 +14,7 @@ Return the maximum profit you can achieve from this transaction. If you cannot a
         # [7, 1, 5, 3, 6, 4]
         #     ^           ^
         # [6, 17, 1, 5, 9]
-        #         ^     ^   
+        #         ^     ^   <-- operation essentially ends here, but we found that 6,17 is the best play
         buy = 0
         for sell in range(1, len(prices)):
             profit = prices[sell] - prices[buy]
