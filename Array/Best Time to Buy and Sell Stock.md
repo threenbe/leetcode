@@ -12,7 +12,7 @@ Return the maximum profit you can achieve from this transaction. If you cannot a
     def maxProfit(self, prices: List[int]) -> int:
         maxProfit = 0
         # [7, 1, 5, 3, 6, 4]
-        #     ^           ^
+        #     ^           ^ <-- 1,6 is the best play
         # [6, 17, 1, 5, 9]
         #         ^     ^   <-- operation essentially ends here, but we found that 6,17 is the best play
         buy = 0
