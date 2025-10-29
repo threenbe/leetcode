@@ -9,7 +9,6 @@ Return the maximum profit you can achieve from this transaction. If you cannot a
 ## Sliding window solution:
 
 ```python3
-class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         maxProfit = 0
         # [7, 1, 5, 3, 6, 4]
@@ -17,15 +16,13 @@ class Solution:
         # [6, 17, 1, 5, 9]
         #         ^     ^   
         buy = 0
-        sell = 1
-        for sell in range(len(prices)):
+        for sell in range(1, len(prices)):
             profit = prices[sell] - prices[buy]
             if (profit < 0):
                 buy = sell
             else:
                 maxProfit = profit if (profit > maxProfit) else maxProfit
         return maxProfit
-
 ```
 
 ## My brute force solution (times out in larger test cases):
