@@ -6,6 +6,24 @@ You want to maximize your profit by choosing a single day to buy one stock and c
 
 Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return `0`.
 
+## Nicest solution (still essentially sliding window):
+
+```python3
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        maxProfit = 0
+        # [7, 1, 5, 3, 6, 4]
+        #     ^           ^
+        # [6, 17, 1, 5, 9]
+        #         ^     ^   
+        buyPrice = prices[0]
+        for sellPrice in prices[1:]:
+            if buyPrice > sellPrice:
+                buyPrice = sellPrice # move forward to get a better entry
+            maxProfit = max(maxProfit, sellPrice - buyPrice)
+        return maxProfit
+```
+
 ## Sliding window solution:
 
 ```python3
