@@ -2,6 +2,58 @@
 
 Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
+## Most efficient solution (I think) in python:
+
+```python3
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        # We want to start from the 0th value in the array, and calculate the max possible
+        # sum of any subarray that ends at that 0th value (in this case, it's just the 0th
+        # value on its own, obviously).
+        # Then, we want to calculate the max possible value of any subarray that ends at the 1st value,
+        # i.e., does the subarray of 0th val + 1st val have a higher value than the subarray of just
+        # the 1st value? This is how we know whether or not to include the 0th value when calculating
+        # subsequent subarray sums, because if the 0th value will only ever decrease the sum of 
+        # subsequent subarrays, then there's no point in including it. In any case, after calculating
+        # the max sum of any subarray that goes up to the 1st value (whichever subarray that may be),
+        # we check to see if this is a higher sum than the max sum of any subarray that goes up to the
+        # 0th value calculated previously. This is how we arrive at our newest max sum. However, even
+        # if the value of just the 0th element is greater than the sum of 0th + 1st, we continue to 
+        # expand our subarray to see if adding more values to 0th + 1st can result in a greater sum 
+        # than just 0th. Hence the distinction between, let's say, "maxSum" and "maxSumOfCurrentSubarray."
+        # Then, we want to calculate the max possible value of any subarray that ends at the
+        # 2nd value, i.e., 0th + 1st + 2nd vs 1st + 2nd vs 2nd. In the previous step, we already
+        # determined the max sum between 0th + 1st vs 1st, so the choice between 0th + 1st + 2nd
+        # vs 1st + 2nd will essentially look like "maxSumOfCurrentSubarray" + 2nd. Then, we
+        # have to decide whether or not just the 2nd value on its own is higher or not. If
+        # "maxSumOfCurrentSubarray" is a negative number, then the *new* maximum subarray sum
+        # is just the 2nd value on its own. Like before, we would decide to exclude the previous
+        # subarray when calculating new subarrays, because including it will always reduce the value
+        # of subsequent sums. But, otherwise, we would obviously include it (ergo, continue to expand
+        # our current subarray rather than start a new one).
+        # With this overly lengthy exercise in logic, we can see that the logic basically repeats
+        # itself on each new element, as long as we track the sum of the subarray that we're currently
+        # building. Whenever our current subarray sum is negative, we start over with a new subarray 
+        # starting with the new value. It might be that our current subarray sum is the highest we'll
+        # ever see, but if including it in subsequent sums could only ever possibly lower *those* sums,
+        # it should be discarded.
+        ###############################
+
+        ###############################
+        # Our first subarray is just the first element, and so it's also our first max sum
+        maxSum = nums[0]
+        maxSumOfCurrentSubarray = nums[0]
+
+        for i in range(1, len(nums)):
+            # What gives us a higher sum: expanding the current subarray, or starting a new one?
+            maxSumOfCurrentSubarray = max(nums[i] + maxSumOfCurrentSubarray, nums[i])
+            # After making a decision above, does the current subarray give us a higher sum than
+            # that of whichever subarray gave us our previous maximum?
+            maxSum = max(maxSum, maxSumOfCurrentSubarray)
+
+        return maxSum
+```
+
 ## Second python attempt:
 
 ```python3
