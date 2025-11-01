@@ -2,6 +2,31 @@
 
 Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
+## Memory-inefficient python solution (lol, funny how this was once again the first solution I came up with; I'm pretty rusty at this)
+
+```python3
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        # We want a 2d array that can be used to represent the different partial sums we find
+        # For example, sums[2][4] would refer to the sum of elements 2-4
+        # If we want to find the value of sums[2][5], we would just need to do sums[2][4] + nums[5]
+        numsLen = len(nums)
+        subarraySums = [[None for _ in range(numsLen)] for _ in range(numsLen)]
+
+        maxSum = nums[0]
+    
+        for i in range(0, numsLen):
+            for j in range(i, numsLen):
+                if i == j:
+                    subarraySums[i][i] = nums[i]
+                    maxSum = max(maxSum, subarraySums[i][i])
+                else:
+                    subarraySums[i][j] = subarraySums[i][j-1] + nums[j]
+                    maxSum = max(maxSum, subarraySums[i][j])
+
+        return maxSum
+```
+
 ## My solution:
 
 ```Java
