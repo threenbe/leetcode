@@ -6,6 +6,8 @@ The product of any prefix or suffix of `nums` is guaranteed to fit in a 32-bit i
 
 You must write an algorithm that runs in `O(n)` time and without using the division operation.
 
+**Follow up**: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
+
 ## Initial brute force O(n^2) solution:
 
 ```python3
