@@ -12,6 +12,34 @@ https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
 
 (literally what is the point of 1-indexing the arrays and placing so much emphasis on that lol)
 
+## Python solution:
+
+```python3
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        leftIdx = 0
+        rightIdx = len(numbers)-1
+        solution = []
+        # Start with two pointers at the beginning and end of the array respectively.
+        # If the sum of these values is too large, then decrement the right pointer.
+        # This will give us a smaller sum, given that the array is sorted in non-decreasing
+        # order. Likewise, if the sum is too small, then increment the left pointer.
+        # Eventually, we'll find the solution.
+
+        while (leftIdx != rightIdx):
+            currentSum = numbers[leftIdx] + numbers[rightIdx]
+            if currentSum == target:
+                solution.append(leftIdx + 1)
+                solution.append(rightIdx + 1)
+                break
+            elif currentSum > target:
+                rightIdx -= 1
+            else:
+                leftIdx += 1
+        
+        return solution
+```
+
 ## My solution:
 
 ```Java
