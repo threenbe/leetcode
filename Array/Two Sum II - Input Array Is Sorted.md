@@ -19,7 +19,6 @@ class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         leftIdx = 0
         rightIdx = len(numbers)-1
-        solution = []
         # Start with two pointers at the beginning and end of the array respectively.
         # If the sum of these values is too large, then decrement the right pointer.
         # This will give us a smaller sum, given that the array is sorted in non-decreasing
@@ -29,15 +28,13 @@ class Solution:
         while (leftIdx != rightIdx):
             currentSum = numbers[leftIdx] + numbers[rightIdx]
             if currentSum == target:
-                solution.append(leftIdx + 1)
-                solution.append(rightIdx + 1)
-                break
+                return [leftIdx + 1, rightIdx + 1]
             elif currentSum > target:
                 rightIdx -= 1
             else:
                 leftIdx += 1
         
-        return solution
+        return []
 ```
 
 ## My solution:
